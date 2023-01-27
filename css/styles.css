@@ -11,6 +11,7 @@
   --alternative-color: #E7E9FC;
   --icon-customers-color: #8E8F99;
   --hover-green-color: #31D0AA;
+  --bg-modal-color: #FCFCFC;
 
   /* typographic variables*/
   --main-font: "Roboto", sans-serif;
@@ -66,7 +67,7 @@
 
 .design-logo {
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
 }
 
 .webstudio-logo>.design-logo {
@@ -90,6 +91,7 @@
   padding-top: 120px;
   margin-left: auto;
   margin-right: auto;
+  /* outline: 1px solid tomato; */
 }
 
 .section-colored {
@@ -168,6 +170,58 @@
   background-color: var(--hover-accent-color);
 }
 
+/* modal form for order service */
+.modal {
+  width: 1440px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: rgba(46, 47, 66, 0.4);
+  outline: 1px solid red;
+  display: flex;
+  justify-content: center;
+  padding-top: 88px;
+  padding-bottom: 13px;
+}
+
+.modal-form {
+  display: flex;
+  justify-content: right;
+  width: 408px;
+  height: 576px;
+  background-color: var(--bg-modal-color);
+}
+
+.btn-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 24px;
+  margin-top: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--alternative-color);
+  color: #000000;
+}
+
+.btn-modal:hover,
+.btn-modal:focus {
+  background-color: var(--hover-accent-color);
+
+}
+
+.icon-modal-close {
+  fill: currentColor;
+}
+
+.btn-modal:hover .icon-modal-close {
+  fill: var(--primary-white-color);
+}
+
 /** ============================== /COMPONENTS ============================== **/
 
 /* main page */
@@ -177,7 +231,6 @@ body {
   line-height: 1.5;
   letter-spacing: .02em;
   margin: 0 auto;
-
   background-color: var(--primary-white-color);
   color: var(--primary-text-color);
 }
@@ -186,12 +239,6 @@ body {
 .section.header {
   padding-top: 0;
   padding-bottom: 0;
-  /* border-bottom: 1px solid var(--alternative-color); */
-
-
-  /* box-shadow: 0px 2px 1px rgba(46, 47, 66, .08),
-    0px 1px 1px rgba(46, 47, 66, .16),
-    0px 1px 6px rgba(46, 47, 66, .08); */
 }
 
 .section.header::after {
@@ -211,7 +258,7 @@ body {
 
 .nav-list .design-logo {
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
 
   display: inline-block;
 }
@@ -229,7 +276,10 @@ body {
 }
 
 .site-nav .link {
-  padding: 24px 0;
+  padding-top: 24px;
+  padding-bottom: 28px;
+  padding-left: 0;
+  padding-right: 0;
 
   font-weight: var(--font-weight-medium);
   color: var(--primary-page-color);
@@ -244,19 +294,19 @@ body {
 }
 
 .site-nav .current {
-  color: var(--accent-color);
+  color: var(--hover-accent-color);
 
 }
 
 .site-nav .current::after {
   content: "";
 
-  transform: translateY(24px);
+  transform: translateY(28px);
 
   display: flex;
 
-  background-color: var(--accent-color);
-  border: 2px solid var(--accent-color);
+  background-color: var(--hover-accent-color);
+  border: 2px solid var(--hover-accent-color);
   border-radius: 2px;
 
 }
@@ -691,6 +741,12 @@ section.hero {
 }
 
 /** ============================== /FOOTER ============================== **/
+
+
+
+
+
+
 
 
 /* Позиционирование
