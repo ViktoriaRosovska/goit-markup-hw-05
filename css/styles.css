@@ -176,50 +176,65 @@
 
 
 /* modal form for order service */
-.modal {
-
+.backdrop {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  opacity: 1;
+  z-index: 1000;
 
   background-color: rgba(46, 47, 66, 0.4);
+
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal.is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  /* transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.overlay.is-hidden .modal-form {
+  transform: translate(-50%, -50%) scale(0.3);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-form {
   position: absolute;
   top: 50%;
   left: 50%;
-
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: right;
   width: 408px;
   height: 576px;
+
+  display: flex;
+  justify-content: right;
   background-color: var(--bg-modal-color);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-modal {
-  display: flex;
+  margin-right: 24px;
+  margin-top: 24px;
   align-items: center;
   justify-content: center;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  margin-right: 24px;
-  margin-top: 24px;
+
+  display: flex;
+
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
   background-color: var(--alternative-color);
   color: #000000;
+
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-modal:hover,
@@ -496,16 +511,14 @@ section.hero {
     0px 2px 1px rgba(46, 47, 66, .08);
 }
 
-.icon-list .link {
-  background-color: var(--accent-color);
-  border-radius: 50%;
+.list-border .list-item {
   min-width: 40px;
   min-height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list-border .icon-list {
@@ -525,8 +538,9 @@ section.hero {
   margin-bottom: 8px;
 }
 
-.icon-list .link:hover {
+.icon-list .list-item:hover {
   background-color: var(--hover-accent-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /** ============================== /TEAM ============================== **/
@@ -539,14 +553,10 @@ section.hero {
   margin-bottom: 0;
   display: flex;
   gap: 24px;
-
 }
 
 .customers-list .list-item {
   list-style: none;
-}
-
-.customers-list .link {
   width: 168px;
   height: 88px;
   border: 1px solid var(--icon-customers-color);
@@ -558,8 +568,8 @@ section.hero {
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.customers-list .link:hover,
-.customers-list .link:focus {
+.customers-list .list-item:hover,
+.customers-list .list-item:focus {
   border-color: var(--hover-accent-color);
 }
 
@@ -574,8 +584,8 @@ section.hero {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.link:hover .icon,
-.link:focus .icon {
+.list-item:hover .icon,
+.list-item:focus .icon {
   fill: var(--hover-accent-color);
 }
 
@@ -640,15 +650,11 @@ section.hero {
 .portfolio-list {
   padding-left: 0;
   margin-top: 0;
-  /* margin-bottom: 0; */
 
   display: flex;
-  /* justify-content: flex-start; */
   flex-wrap: wrap;
   margin-right: -24px;
   margin-bottom: -48px;
-  /* row-gap: 48px; */
-  /* column-gap: 24px; */
 }
 
 .portfolio-list .list-item {
@@ -663,7 +669,6 @@ section.hero {
   text-align: left;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, .08);
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
 }
 
 .portfolio-list .thumb:hover {
@@ -675,14 +680,18 @@ section.hero {
 
 .thumb:hover .overlay-box {
   opacity: 1;
+  transform: translatey(0);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-list .overlay {
   position: relative;
-
+  overflow: hidden;
 }
 
 .overlay-box {
+  position: absolute;
   padding-top: 40px;
   padding-left: auto;
   padding-right: auto;
@@ -696,14 +705,14 @@ section.hero {
   width: 100%;
   height: 100%;
   background-color: var(--accent-color);
-  opacity: 0;
+  opacity: 1;
+  transform: translatey(100%);
 }
 
 .text-overlay {
   width: 296px;
   margin-top: 0;
   margin-bottom: 0;
-
 }
 
 /** ============================== /FILTER ============================== **/
@@ -756,29 +765,24 @@ section.hero {
   display: flex;
 }
 
-.footer-icon .link {
+.footer-icon .list-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
-}
 
-.footer-icon .link:hover,
-.footer-icon .link:focus {
-  background-color: var(--hover-green-color);
-}
-
-.footer-icon {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icon .list-item:hover,
+.footer-icon .list-item:focus {
+  background-color: var(--hover-green-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /** ============================== /FOOTER ============================== **/
-
-
-
-
-
-
-
 
 /* Позиционирование
 Блочная модель
