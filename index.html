@@ -57,7 +57,7 @@
       <section class="hero section">
         <div class="hero-container container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
-          <button class="button" type="button">Order Service</button>
+          <button data-modal-open class="button" type="button" >Order Service</button>
         </div>
       </section>
 
@@ -494,9 +494,9 @@
     </footer>
 
     <!-- modal form order service -->
-    <div class="modal is-hidden">
+    <div data-modal class="modal is-hidden">
       <div class="modal-form">
-        <button class="btn-modal" type="button">
+        <button data-modal-close class="btn-modal" type="button" aria-label="close modal window">
           <svg class="icon-modal-close" width="8" height="8">
             <use href="./images/svg/icons-modal.svg#icon-modal-close">
           </svg>
@@ -504,6 +504,6 @@
       <div>
     </div>
 
-   
+    <script src="./js/modal.js"></script>
   </body>
 </html>
