@@ -715,7 +715,6 @@ section.hero {
   padding-right: auto;
   display: flex;
   justify-content: center;
-  color: var(--light-accent-color);
   text-align: center;
   position: absolute;
   top: 0;
@@ -730,6 +729,7 @@ section.hero {
   width: 296px;
   margin-top: 0;
   margin-bottom: 0;
+  color: var(--light-accent-color);
 }
 
 /** ============================== /FILTER ============================== **/
